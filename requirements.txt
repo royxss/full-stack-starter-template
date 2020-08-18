@@ -1,0 +1,5 @@
+wheel
+Django==3.1
+djangorestframework==3.11.1
+django-cors-headers==3.4.0
+python-decouple==3.3

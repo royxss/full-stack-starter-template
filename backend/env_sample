@@ -1,0 +1,8 @@
+# Rename this file to .env and make necessary modifications
+SECRET_KEY = "Ask your admin"
+
+# Add a servername in the production
+SERVER_NAME = ""
+
+# .env does not support list so adding the list as a string and using literal_eval in the py file
+CORS_ORIGIN_WHITELIST = "['http://localhost:8000', 'http://localhost:3000', 'http://localhost:9090']"
