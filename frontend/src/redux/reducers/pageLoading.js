@@ -1,12 +1,16 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+//                        Set Redux state of page loading or await signal
+//////////////////////////////////////////////////////////////////////////////////////////
+
 var initialState = 0;
 const pageLoading = (state = initialState, { type, payload }) => {
-    switch (type) {
-      case 'PAGE_LOADING': {
-        return state = payload
-      }
-      default:
-        return state
-    }   
+  switch (type) {
+    case "PAGE_LOADING": {
+      return (state = payload);
+    }
+    default:
+      return state;
   }
+};
 
-export default pageLoading  
+export default pageLoading;
