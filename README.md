@@ -1,14 +1,12 @@
 ## Full Stack Starter Template:
 
-1. ### The starter template has the below technical stack which is still under work.
+1. ### The starter template uses the below technical stack which is still under work.
 
    - React.js
    - Redux
    - Django with REST
    - Python
    - Docker
-   - Docker Swarm
-   - Ansible
    - GitHub
 
 2. ### How to start the application?
@@ -20,4 +18,11 @@
    - docker build -t starter-app-monolith .
    - docker run --rm -d -p 9091:9091 starter-app-monolith
 
-3. ### Status: Incomplete
+   #### Or
+
+   - git pull
+   - docker-compose down && docker-compose build --pull && docker-compose up -d
+
+3. ### Status:
+
+   Incomplete
