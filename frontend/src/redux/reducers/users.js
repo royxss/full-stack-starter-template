@@ -7,10 +7,7 @@ const initialState = [];
 
 // Munges data to react select format
 usersData.map((itm) => {
-  return initialState.push({
-    value: itm.id,
-    label: itm.name,
-  });
+  return initialState.push({ ...itm, value: itm.id, label: itm.name });
 });
 
 const users = (state = initialState, { type, payload }) => {

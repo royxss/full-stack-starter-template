@@ -1,22 +1,23 @@
-## Full Stack Starter Template
+## Full Stack Starter Template:
 
-- React.js
-- Django with REST
-- Python
-- Docker
-- Docker Swarm
-- Ansible
+1. ### The starter template has the below technical stack which is still under work.
 
-### Start application using Docker:
+   - React.js
+   - Redux
+   - Django with REST
+   - Python
+   - Docker
+   - Docker Swarm
+   - Ansible
+   - GitHub
 
-#### Note: There is no compose here as it is just one container.
+2. ### How to start the application?
 
-- docker build -t app .
-- docker run -d -p 9091:9091 app:latest
+   #### Use docker container to start the application from the folder where Dockerfile exists.
 
-#### Test only front-end and not the full app?
+   - git pull
+   - docker stop \$(docker ps -q --filter ancestor=starter-app-monolith) # if already running
+   - docker build -t starter-app-monolith .
+   - docker run --rm -d -p 9091:9091 starter-app-monolith
 
-- docker build -t frontend .
-- docker run -it -p 3000:3000 frontend:latest
-
-### Status: Incomplete
+3. ### Status: Incomplete

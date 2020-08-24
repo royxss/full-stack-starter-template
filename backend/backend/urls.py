@@ -32,4 +32,7 @@ urlpatterns = [
     # REST API. Token will preceed
     path(token + '/getUser/', userinfo.getUser),
 
-] + static('storage', document_root="backend/storage")
+    # Connect to React App
+    path('dashboard/', lambda request: HttpResponse(open("../frontend/build/index.html", "r").read(), "text/html")),
+
+] + static('storage', document_root="backend/storage") + static('dashboard/', document_root = "../frontend/build")

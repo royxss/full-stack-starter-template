@@ -16,7 +16,7 @@ export default [
     _tag: "CSidebarNavItem",
     name: "Credit Risk Analysis",
     //to: '/theme/colors',
-    icon: "cil-speedometer",
+    icon: "cil-chevron-right",
   },
   {
     _tag: "CSidebarNavItem",

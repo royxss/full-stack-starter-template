@@ -79,7 +79,6 @@ function UserTable() {
             <td className="py-2">
               <CButton
                 color="primary"
-                variant="outline"
                 shape="square"
                 size="sm"
                 onClick={() => {
