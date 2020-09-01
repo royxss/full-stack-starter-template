@@ -6,8 +6,8 @@
    - Redux
    - Django with REST
    - Python
+   - PyTest - Pending
    - Docker
-   - GitHub
 
 2. ### How to start the application?
 
@@ -25,4 +25,14 @@
 
 3. ### Status:
 
-   Incomplete
+   Complete
+
+## How to use it:
+
+Use this as a data science template (or any other) for full stack development or PoC. Serves best for data scientists proficient in Python and React, requiring full framework interaction. Render analytics, statistics, recommendation, etc. in the frontend generated from machine learning workflows in the backend. Once the application is developed, deploy in any cloud environment using docker.
+
+1.  Add UI components in frontend/src/components folder using React, JavaScript. I use coreui react template which is great. Check it out [here](https://coreui.io/react/)!
+2.  Add actions such as axios requests for the backend in frontend/src/redux/actions. Test the frontend at 3000 port by running `npm install` and then `npm start`.
+3.  Set up http end points in backend/api folder using Python. Design how to serve requests to the frontend.
+4.  run: `npm run-script build` inside frontend folder.
+5.  run: `start-server-dev.sh` inside backend folder. Check your localhost at port 9091
