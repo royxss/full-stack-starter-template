@@ -26,7 +26,7 @@ COPY . ./
 ###########################################
 
 # set working directory
-WORKDIR /app/react-apps
+WORKDIR /app/frontend
 
 # install app dependencies
 RUN npm install

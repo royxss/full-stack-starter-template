@@ -21,7 +21,9 @@
    #### Or
 
    - git pull
-   - docker-compose down && docker-compose build --pull && docker-compose up -d
+   - docker-compose build --pull && docker-compose down && docker-compose up -d
+
+   #### Open browser using `http://0.0.0.0:9091/dashboard/`
 
 3. ### Status:
 
