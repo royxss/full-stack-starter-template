@@ -1,6 +1,6 @@
 ## Full Stack Starter Template:
 
-1. ### The starter template uses the below technical stack which is still under work.
+1. ### The starter template uses the below technical stack.
 
    - React.js
    - Redux
@@ -37,11 +37,9 @@ Use this as a data science template (or any other) for full stack development or
 2.  Add actions such as axios requests for the backend in frontend/src/redux/actions. Test the frontend at 3000 port by running `npm install` and then `npm start`.
 3.  Set up http end points in backend/api folder using Python. Design how to serve requests to the frontend.
 4.  run: `npm run-script build` inside frontend folder.
-5.  run: `start-server-dev.sh` inside backend folder. Check your localhost at port 9091
+5.  run: `start-server-dev.sh` inside backend folder. Check your localhost at port 9091 `http://0.0.0.0:9091/dashboard/`.
 
 ## Helpers:
 
 1. If you wish to load some data structures when the server starts and access them globally, add them to backend/loaders.py.
 2. To run unit tests when the server starts, create test cases in backend/unit-testing folder. The file name and test functions should have a prefix of test. The tests are congifured to start automatically when the server starts. If running tests manually, run `pytest -v` from backend folder.
-
-## Testing Jenkins Build...
