@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.http import HttpResponse, HttpResponseRedirect
 from .views import welcome
-from .api import userinfo
+from .api import userinfo, eventstream
 
 token = 'api'
 
@@ -31,6 +31,9 @@ urlpatterns = [
 
     # REST API. Token will preceed
     path(token + '/getUser/', userinfo.getUser),
+
+    # Event Stream
+    path(token + '/stream/', eventstream.stream),
 
     # Connect to React App
     path('dashboard/', lambda request: HttpResponse(open("../frontend/build/index.html", "r").read(), "text/html")),
