@@ -1,5 +1,5 @@
 """ //////////////////////////////////////////////////////////////////////////////////////////
-                                        HTTP end points
+                                    HTTP end point for event streaming
 ////////////////////////////////////////////////////////////////////////////////////////// """
     
 import numpy as np
@@ -8,9 +8,11 @@ import datetime
 from django.http import StreamingHttpResponse
 
 def stream(request):
+    eos = ''
     def events():
         start = 1
-        while (start < 10):
+        print("API event stream starting...")
+        while (start <= 30):
             data = {
                 "date": start,
                 "price": np.random.uniform(50.9, 90.9)
@@ -18,8 +20,7 @@ def stream(request):
             time.sleep(2)
             start +=1
             
-            print('The new coordinate is: %s\n\n' % data)
-            yield data
-    return StreamingHttpResponse(events(), content_type="text/event-stream") 
-   
-
+            print('The new data is: %s\n\n' % data)
+            # Note: yielding `data:` is necessary to access as a frontend parameter
+            yield 'data: %s\n\n' % data
+    return StreamingHttpResponse(events(), content_type="text/event-stream")

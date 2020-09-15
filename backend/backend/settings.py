@@ -28,7 +28,7 @@ env_config = Config(RepositoryEnv(DOTENV_FILE))
 SECRET_KEY = env_config.get('SECRET_KEY')
 
 # CORS Settings
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = literal_eval(env_config.get('CORS_ORIGIN_WHITELIST'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
