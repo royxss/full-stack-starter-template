@@ -2,6 +2,7 @@ import React from "react";
 
 import UserTable from "../../components/common/UserTable";
 import EventStream from "../../components/common/EventStream";
+import RealTimeChart from "../../components/common/RealTimeChart";
 import { useSelector } from "react-redux";
 import { CubeGrid } from "styled-loaders-react";
 
@@ -15,6 +16,7 @@ const Dashboard = () => {
       ) : (
         <>
           <UserTable />
+          <RealTimeChart />
           <EventStream />
         </>
       )}
