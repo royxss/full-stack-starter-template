@@ -5,6 +5,7 @@
 import numpy as np
 import time
 import datetime
+import json
 from django.http import StreamingHttpResponse
 
 def stream(request):
@@ -17,6 +18,7 @@ def stream(request):
                 "date": start,
                 "price": np.random.uniform(50.9, 90.9)
             }
+            data = json.dumps(data)
             time.sleep(2)
             start +=1
             

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import "chartjs-plugin-streaming";
 
@@ -15,7 +15,7 @@ var chartColors = {
 const data = {
   datasets: [
     {
-      label: "Dataset 2 (cubic interpolation)",
+      label: "Live Prices",
       backgroundColor: chartColors.red,
       borderColor: chartColors.blue,
       fill: false,
@@ -25,38 +25,73 @@ const data = {
   ],
 };
 
-const options = {
-  title: {
-    display: true,
-    text: "Line chart - Stock Prices",
-  },
-  scales: {
-    xAxes: [
-      {
-        type: "realtime",
-        realtime: {
-          onRefresh: function () {
-            data.datasets[0].data.push({
-              x: Date.now(),
-              y: Math.random() * 100,
-            });
-          },
-          delay: 2000,
-        },
-      },
-    ],
-  },
-  tooltips: {
-    mode: "nearest",
-    intersect: false,
-  },
-  hover: {
-    mode: "nearest",
-    intersect: false,
-  },
-};
+/* function onRefresh(chart) {
+  chart.config.data.datasets.forEach(function (dataset) {
+    dataset.data.push({
+      x: xData,
+      y: yData,
+    });
+  });
+}
+ */
 
-const RealTimeChart = () => {
+function setOptions(xData, yData) {
+  console.log(xData + "...." + yData);
+  const options = {
+    title: {
+      display: true,
+      text: "Line chart - Stock Prices",
+    },
+    scales: {
+      xAxes: [
+        {
+          type: "realtime",
+          realtime: {
+            duration: 20000,
+            refresh: 1000,
+            delay: 2000,
+            onRefresh: function () {
+              data.datasets[0].data.push({
+                x: xData,
+                y: yData,
+              });
+            },
+          },
+        },
+      ],
+      yAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "value",
+          },
+        },
+      ],
+    },
+    tooltips: {
+      mode: "nearest",
+      intersect: false,
+    },
+    hover: {
+      mode: "nearest",
+      intersect: false,
+    },
+  };
+  //console.log(data.datasets[0]);
+  return options;
+}
+
+const RealTimeChart = (props) => {
+  const [xData, setXData] = useState([0, 0]);
+  //const [yData, setYData] = useState(0);
+  let options = {};
+
+  useEffect(() => {
+    setXData(props.xData);
+    //setYData(props.yData);
+    options = setOptions(xData[0], xData[1]);
+  }, [props]);
+
   return (
     <div>
       <Line data={data} options={options} />
