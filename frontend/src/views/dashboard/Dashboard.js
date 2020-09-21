@@ -16,7 +16,6 @@ const Dashboard = () => {
       ) : (
         <>
           <UserTable />
-
           <EventStream />
         </>
       )}

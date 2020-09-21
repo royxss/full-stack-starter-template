@@ -9,7 +9,7 @@ import RealTimeChart from "./RealTimeChart";
 const EventStream = () => {
   /*   const [xdataStream, setXDataStream] = useState([]);
   const [ydataStream, setYDataStream] = useState([]); */
-  const [xdataStream, setXDataStream] = useState([0, 0]);
+  const [xdataStream, setXDataStream] = useState([0, 50]);
   //const [ydataStream, setYDataStream] = useState(0);
 
   useEffect(() => {

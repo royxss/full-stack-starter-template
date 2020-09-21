@@ -25,18 +25,17 @@ const data = {
   ],
 };
 
-/* function onRefresh(chart) {
-  chart.config.data.datasets.forEach(function (dataset) {
+function onRefresh(xData, yData) {
+  data.datasets.forEach(function (dataset) {
     dataset.data.push({
       x: xData,
       y: yData,
     });
   });
 }
- */
 
 function setOptions(xData, yData) {
-  console.log(xData + "...." + yData);
+  //console.log(xData + "...." + yData);
   const options = {
     title: {
       display: true,
@@ -50,12 +49,7 @@ function setOptions(xData, yData) {
             duration: 20000,
             refresh: 1000,
             delay: 2000,
-            onRefresh: function () {
-              data.datasets[0].data.push({
-                x: xData,
-                y: yData,
-              });
-            },
+            onRefresh: onRefresh(xData, yData),
           },
         },
       ],
@@ -77,12 +71,12 @@ function setOptions(xData, yData) {
       intersect: false,
     },
   };
-  //console.log(data.datasets[0]);
+  console.log(data.datasets[0].data);
   return options;
 }
 
 const RealTimeChart = (props) => {
-  const [xData, setXData] = useState([0, 0]);
+  const [xData, setXData] = useState([0, 50]);
   //const [yData, setYData] = useState(0);
   let options = {};
 
