@@ -2,40 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import "chartjs-plugin-streaming";
 
-var chartColors = {
-  red: "rgb(255, 99, 132)",
-  orange: "rgb(255, 159, 64)",
-  yellow: "rgb(255, 205, 86)",
-  green: "rgb(75, 192, 192)",
-  blue: "rgb(54, 162, 235)",
-  purple: "rgb(153, 102, 255)",
-  grey: "rgb(201, 203, 207)",
-};
-
 const data = {
   datasets: [
     {
       label: "Live Prices",
-      backgroundColor: chartColors.red,
-      borderColor: chartColors.blue,
+      backgroundColor: "rgb(255, 99, 132)",
+      borderColor: "rgb(54, 162, 235)",
       fill: false,
       lineTension: 0,
+      borderDash: [8, 4],
       data: [],
     },
   ],
 };
 
-function onRefresh(xData, yData) {
-  data.datasets.forEach(function (dataset) {
-    dataset.data.push({
-      x: xData,
-      y: yData,
-    });
-  });
-}
+const RealTimeChart = (props) => {
+  const [streamData, setstreamData] = useState([0, 60]);
 
-function setOptions(xData, yData) {
-  //console.log(xData + "...." + yData);
+  // Set plot options
   const options = {
     title: {
       display: true,
@@ -46,18 +30,33 @@ function setOptions(xData, yData) {
         {
           type: "realtime",
           realtime: {
-            duration: 20000,
-            refresh: 1000,
-            delay: 2000,
-            onRefresh: onRefresh(xData, yData),
+            duration: 20000, // data in the past 20000 ms will be displayed
+            refresh: 2000, // onRefresh callback will be called every 1000 ms
+            delay: 100, // delay of 1000 ms, so upcoming values are known before plotting a line
+            pause: false, // chart is not paused
+            ttl: undefined, // data will be automatically deleted as it disappears off the chart
+
+            onRefresh: function onRefresh(chart) {
+              var newdata = {
+                x: Date.now(),
+                y: streamData[1],
+              };
+
+              chart.config.data.datasets.forEach(function (dataset) {
+                dataset.data.push(newdata);
+              });
+              //console.log(data.datasets[0].data);
+            },
           },
         },
       ],
       yAxes: [
         {
+          type: "linear",
+          display: true,
           scaleLabel: {
             display: true,
-            labelString: "value",
+            labelString: "Prices",
           },
         },
       ],
@@ -71,19 +70,9 @@ function setOptions(xData, yData) {
       intersect: false,
     },
   };
-  console.log(data.datasets[0].data);
-  return options;
-}
-
-const RealTimeChart = (props) => {
-  const [xData, setXData] = useState([0, 50]);
-  //const [yData, setYData] = useState(0);
-  let options = {};
 
   useEffect(() => {
-    setXData(props.xData);
-    //setYData(props.yData);
-    options = setOptions(xData[0], xData[1]);
+    setstreamData(props.xData);
   }, [props]);
 
   return (

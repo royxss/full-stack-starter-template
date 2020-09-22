@@ -7,10 +7,7 @@ import RealTimeChart from "./RealTimeChart";
 //const APIStream = "http://localhost:9091/api/stream/";
 
 const EventStream = () => {
-  /*   const [xdataStream, setXDataStream] = useState([]);
-  const [ydataStream, setYDataStream] = useState([]); */
-  const [xdataStream, setXDataStream] = useState([0, 50]);
-  //const [ydataStream, setYDataStream] = useState(0);
+  const [dataStream, setDataStream] = useState([0, 60]);
 
   useEffect(() => {
     let eventSource = new EventSource(APIStream);
@@ -18,8 +15,7 @@ const EventStream = () => {
     eventSource.onmessage = (event) => {
       let obj = event.data;
       obj = JSON.parse([obj]);
-      updateXDataStreamArray([obj.date, obj.price]);
-      //updateYDataStreamArray(obj.price);
+      updateDataStreamArray([obj.date, obj.price]);
     };
 
     // returned function will be called on component unmount
@@ -28,13 +24,9 @@ const EventStream = () => {
     };
   }, []);
 
-  const updateXDataStreamArray = (itm) => {
+  const updateDataStreamArray = (itm) => {
     /* setXDataStream((currentState) => [...currentState, itm]); */
-    setXDataStream(itm);
-  };
-  const updateYDataStreamArray = (itm) => {
-    /* setYDataStream((currentState) => [...currentState, itm]); */
-    //setYDataStream(itm);
+    setDataStream(itm);
   };
 
   return (
@@ -46,8 +38,7 @@ const EventStream = () => {
         </div>
       </CCardHeader>
       <CCardBody>
-        {/*xdataStream.map((itm, i) => itm + ":" + ydataStream[i] + "  -->  ")*/}
-        <RealTimeChart xData={xdataStream} /*yData={ydataStream}*/ />
+        <RealTimeChart xData={dataStream} />
       </CCardBody>
     </CCard>
   );

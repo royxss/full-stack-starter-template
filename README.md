@@ -4,30 +4,32 @@
 
    - React.js
    - Redux
-   - Django with REST
+   - Django with REST/Real Time Event Stream
    - Python
    - PyTest
    - Docker
 
 2. ### How to start the application?
 
-   #### Use docker container to start the application from the folder where Dockerfile exists.
+   #### Use docker container to start the application from the folder where Dockerfile exists. _Note: Please make sure docker and compose is installed in your machine_
 
    - git pull
    - docker stop \$(docker ps -q --filter ancestor=starter-app-monolith) # if already running
    - docker build -t starter-app-monolith .
    - docker run --rm -d -p 9091:9091 starter-app-monolith
 
-   #### Or
+   #### Or using docker compose
 
    - git pull
    - docker-compose build --pull && docker-compose down && docker-compose up -d
 
    #### Open browser using `http://0.0.0.0:9091/dashboard/`
 
+   ![Alt Text](./screen-demo.gif)
+
 3. ### Status:
 
-   Complete
+   Enhancement Mode
 
 ## How to use it:
 
@@ -43,3 +45,7 @@ Use this as a data science template (or any other) for full stack development or
 
 1. If you wish to load some data structures when the server starts and access them globally, add them to backend/loaders.py.
 2. To run unit tests when the server starts, create test cases in backend/unit-testing folder. The file name and test functions should have a prefix of test. The tests are congifured to start automatically when the server starts. If running tests manually, run `pytest -v` from backend folder.
+
+## Updates:
+
+1. (Sep-22-2020) Real time event streaming using chartjs served through Django backend (backend/api/). Used random stock price generation using numpy.

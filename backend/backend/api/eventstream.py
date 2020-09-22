@@ -16,7 +16,7 @@ def stream(request):
         while (start <= 30):
             data = {
                 "date": start,
-                "price": round(np.random.uniform(55.9, 60.9), 2)
+                "price": round(np.random.uniform(58.9, 60.9), 2)
             }
             data = json.dumps(data)
             time.sleep(2)
